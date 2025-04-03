@@ -1,26 +1,281 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>love</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>感谢小雨</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #fff1eb, #ace0f9);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #petalContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            will-change: transform;
+            transition: transform 8s linear, opacity 0.5s ease-out;
+            opacity: 0;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .petal.paused {
+            transition: none !important;
+        }
+
+        .petal-tooltip {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transform: translate(-50%, -30px);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .petal:hover .petal-tooltip {
+            opacity: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        .title {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        #controlBtn {
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            pointer-events: auto;
+            min-width: 120px;
+        }
+
+        #controlBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,107,107,0.4); }
+            to { text-shadow: 0 0 20px rgba(255,107,107,0.8); }
+        }
+    </style>
 </head>
 <body>
-<h1 id="xhz"></h1>
-<script>
-    var j = 99;
-    for(var i = 0;i < j;i++){
-    alert("请点击确定按钮100次，这是第"+i+"次");
-        if (i === 98) {
-            alert("感谢你已经点击第99次了，相当于有100米，你已经向我走了99米");
-            love();
-            function love() {
-                var h = document.querySelector('#xhz');
-                console.log(h);
-                xhz.innerHTML="<h1 style='color: pink;font-size: 50px;'>小华子你是最棒的！！！！加油相信自己</h1>"
-                return alert("那么就到此为止吧，再爱的话，就不礼貌了！！！");
+    <div class="container text-center vh-100 d-flex flex-column justify-content-center align-items-center content">
+        <h1 class="display-3 display-md-1 fw-bold title mb-4">🌸 感谢小雨 🌸</h1>
+        <p class="h5 h4-md text-muted mb-4">点击按钮控制花瓣雨</p>
+        <button id="controlBtn" class="btn btn-danger btn-lg rounded-pill px-4 py-2">
+            开始花瓣雨
+        </button>
+    </div>
+
+    <div id="petalContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 祝福语集合
+        const MESSAGES = [
+            "谢谢你带来的温暖",
+            "你如春风般温柔",
+            "感恩你的帮助",
+            "世界因你更美好",
+            "感谢你的善意",
+            "你是我生命中的阳光",
+            "每一片花瓣都是感谢",
+            "你的善良感动了我",
+            "愿幸福常伴你左右",
+            "感谢相遇的缘分"
+        ];
+
+        // 花瓣图片 - 使用SVG确保可用性
+        const PETALS = [
+            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJwdXJwbGUiIGQ9Ik0yNTYgNDhDMzQxLjQgNDggNDA4IDExNC42IDQwOCAyMDBzLTY2LjYgMTUyLTE1MiAxNTJTNTQgMjg1LjQgNTQgMjAwUzE3MC42IDQ4IDI1NiA0OHoiLz48L3N2Zz4=",
+            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJwaW5rIiBkPSJNMjU2IDQ4QzM0MS40IDQ4IDQwOCAxMTQuNiA0MDggMjAwcy02Ni42IDE1Mi0xNTIgMTUyUzU0IDI4NS40IDU0IDIwMFMxNzAuNiA0OCAyNTYgNDh6Ii8+PC9zdmc+",
+            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJob3RwaW5rIiBkPSJNMjU2IDQ4QzM0MS40IDQ4IDQwOCAxMTQuNiA0MDggMjAwcy02Ni42IDE1Mi0xNTIgMTUyUzU0IDI4NS40IDU0IDIwMFMxNzAuNiA0OCAyNTYgNDh6Ii8+PC9zdmc+"
+        ];
+
+        class PetalSystem {
+            constructor() {
+                this.container = document.getElementById('petalContainer');
+                this.controlBtn = document.getElementById('controlBtn');
+                this.isPlaying = false;
+                this.petals = [];
+                this.animationInterval = null;
+                this.nextPetalTime = 0;
+                this.init();
+            }
+
+            init() {
+                this.controlBtn.addEventListener('click', () => {
+                    if (!this.isPlaying) {
+                        this.startAnimation();
+                        this.controlBtn.textContent = '暂停花瓣雨';
+                        this.controlBtn.classList.remove('btn-danger');
+                        this.controlBtn.classList.add('btn-warning');
+                    } else {
+                        this.pauseAnimation();
+                        this.controlBtn.textContent = '继续花瓣雨';
+                        this.controlBtn.classList.remove('btn-warning');
+                        this.controlBtn.classList.add('btn-success');
+                    }
+                    this.isPlaying = !this.isPlaying;
+                });
+            }
+
+            startAnimation() {
+                // 启动花瓣生成
+                this.generatePetals();
+                
+                // 恢复所有花瓣动画
+                this.petals.forEach(petal => {
+                    petal.classList.remove('paused');
+                    const currentY = parseFloat(petal.dataset.currentY || 0);
+                    const remainingDistance = window.innerHeight - currentY;
+                    const duration = remainingDistance / 50; // 根据剩余距离计算时间
+                    
+                    petal.style.transition = `transform ${duration}s linear`;
+                    petal.style.transform = `
+                        translate(${petal.dataset.translateX || 0}px, ${window.innerHeight}px)
+                        rotate(${720 + Math.random() * 720}deg)
+                    `;
+                });
+            }
+
+            pauseAnimation() {
+                clearInterval(this.animationInterval);
+                
+                // 暂停所有花瓣动画
+                this.petals.forEach(petal => {
+                    petal.classList.add('paused');
+                    const transform = window.getComputedStyle(petal).transform;
+                    
+                    // 保存当前变换状态
+                    if (transform && transform !== 'none') {
+                        const matrix = new DOMMatrix(transform);
+                        petal.dataset.translateX = matrix.m41;
+                        petal.dataset.currentY = matrix.m42;
+                    }
+                });
+            }
+
+            generatePetals() {
+                // 立即生成一批花瓣
+                for (let i = 0; i < 20; i++) {
+                    this.createPetal();
+                }
+                
+                // 持续生成花瓣
+                this.animationInterval = setInterval(() => {
+                    this.createPetal();
+                    if (Math.random() > 0.7) this.createPetal(); // 70%概率多生成一片
+                }, 200);
+            }
+
+            createPetal() {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                // 随机样式
+                const size = 25 + Math.random() * 25;
+                const startX = Math.random() * 100;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.left = `${startX}vw`;
+                petal.style.top = `-${size}px`;
+                petal.style.backgroundImage = `url("${PETALS[Math.floor(Math.random() * PETALS.length)]}")`;
+                petal.style.opacity = '0';
+                petal.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+                petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                // 添加悬停文本
+                const tooltip = document.createElement('div');
+                tooltip.className = 'petal-tooltip';
+                tooltip.textContent = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+                petal.appendChild(tooltip);
+                
+                this.container.appendChild(petal);
+                this.petals.push(petal);
+                
+                // 开始动画
+                requestAnimationFrame(() => {
+                    const endX = (Math.random() * 20 - 10);
+                    petal.style.opacity = '0.8';
+                    petal.style.transition = 'transform 8s linear';
+                    petal.style.transform = `
+                        translate(${endX}px, ${window.innerHeight}px)
+                        rotate(${720 + Math.random() * 720}deg)
+                    `;
+                    petal.dataset.translateX = endX;
+                });
+                
+                // 动画完成后重新开始
+                setTimeout(() => {
+                    if (this.isPlaying && petal.parentNode) {
+                        this.resetPetal(petal);
+                    }
+                }, 8000);
+            }
+
+            resetPetal(petal) {
+                const size = parseFloat(petal.style.width);
+                petal.style.top = `-${size}px`;
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.transition = 'none';
+                petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                requestAnimationFrame(() => {
+                    const endX = (Math.random() * 20 - 10);
+                    petal.style.transition = 'transform 8s linear';
+                    petal.style.transform = `
+                        translate(${endX}px, ${window.innerHeight}px)
+                        rotate(${720 + Math.random() * 720}deg)
+                    `;
+                    petal.dataset.translateX = endX;
+                    
+                    // 循环动画
+                    setTimeout(() => {
+                        if (this.isPlaying && petal.parentNode) {
+                            this.resetPetal(petal);
+                        }
+                    }, 8000);
+                });
             }
         }
-    }
-</script>
+
+        // 初始化系统
+        new PetalSystem();
+    </script>
 </body>
 </html>
