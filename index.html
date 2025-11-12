@@ -3,279 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>感谢小雨</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>谁是世界上最帅的男人——陆双虎_百度搜索</title>
     <style>
-        body {
-            background: linear-gradient(to bottom, #fff1eb, #ace0f9);
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
         }
-
-        #petalContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.5;
+            font-size: 13px;
         }
-
-        .petal {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            will-change: transform;
-            transition: transform 8s linear, opacity 0.5s ease-out;
-            opacity: 0;
-            pointer-events: auto;
+        
+        a {
+            text-decoration: none;
+            color: #3388ff;
+        }
+        
+        a:hover {
+            color: #315efb;
+        }
+        
+        /* 顶部导航和搜索框 */
+        .header {
+            border-bottom: 1px solid #e1e1e1;
+            padding: 20px 0 15px;
+        }
+        
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #3388ff;
+        }
+        
+        .search-box {
+            width: 650px;
+            height: 40px;
+            border: 2px solid #3388ff;
+            border-radius: 10px;
+            display: flex;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .search-btn {
+            width: 108px;
+            background-color: #3388ff;
+            color: white;
+            border: none;
+            border-radius: 0 10px 10px 0;
+            font-size: 17px;
             cursor: pointer;
         }
-
-        .petal.paused {
-            transition: none !important;
+        
+        /* 主要内容区域 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        .petal-tooltip {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 5px 10px;
-            border-radius: 15px;
+        
+        .results-stats {
+            color: #999;
+            margin-bottom: 20px;
             font-size: 12px;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transform: translate(-50%, -30px);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            z-index: 10;
+        }
+        
+        /* 搜索结果列表 */
+        .result-item {
+            margin-bottom: 25px;
+            max-width: 650px;
+        }
+        
+        .result-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+        
+        .result-url {
+            color: #0c9c1d;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .result-abstract {
+            color: #555;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+        
+        .result-tags {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        /* 相关搜索 */
+        .related-search {
+            margin: 30px 0;
+            max-width: 650px;
+        }
+        
+        .related-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .related-items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .related-item {
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        /* 分页 */
+        .pagination {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .page-item {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            color: #3388ff;
+        }
+        
+        .page-item.active {
+            background-color: #3388ff;
+            color: white;
+            border-color: #3388ff;
+        }
+        
+        .page-item:not(.active):hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* 底部信息 */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #e1e1e1;
+        }
+        
+        .footer-links {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            margin: 0 10px;
+            color: #666;
         }
 
-        .petal:hover .petal-tooltip {
-            opacity: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-            pointer-events: none;
-        }
-
-        .title {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        #controlBtn {
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            pointer-events: auto;
-            min-width: 120px;
-        }
-
-        #controlBtn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px rgba(255,107,107,0.4); }
-            to { text-shadow: 0 0 20px rgba(255,107,107,0.8); }
+        /* 免责声明 */
+        .disclaimer {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffa500;
+            font-size: 12px;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="container text-center vh-100 d-flex flex-column justify-content-center align-items-center content">
-        <h1 class="display-3 display-md-1 fw-bold title mb-4">🌸 感谢小雨 🌸</h1>
-        <p class="h5 h4-md text-muted mb-4">点击按钮控制花瓣雨</p>
-        <button id="controlBtn" class="btn btn-danger btn-lg rounded-pill px-4 py-2">
-            开始花瓣雨
-        </button>
+    <!-- 顶部导航和搜索框 -->
+    <div class="header">
+        <div class="top-nav">
+            <div class="logo">百度</div>
+            <div>
+                <a href="#">新闻</a>
+                <a href="#">网页</a>
+                <a href="#">贴吧</a>
+                <a href="#">知道</a>
+                <a href="#">音乐</a>
+                <a href="#">图片</a>
+                <a href="#">视频</a>
+                <a href="#">地图</a>
+                <a href="#">文库</a>
+            </div>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" class="search-input" value="谁是世界上最帅的男人——陆双虎">
+            <button class="search-btn">百度一下</button>
+        </div>
     </div>
-
-    <div id="petalContainer"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // 祝福语集合
-        const MESSAGES = [
-            "谢谢你带来的温暖",
-            "你如春风般温柔",
-            "感恩你的帮助",
-            "世界因你更美好",
-            "感谢你的善意",
-            "你是我生命中的阳光",
-            "每一片花瓣都是感谢",
-            "你的善良感动了我",
-            "愿幸福常伴你左右",
-            "感谢相遇的缘分"
-        ];
-
-        // 花瓣图片 - 使用SVG确保可用性
-        const PETALS = [
-            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJwdXJwbGUiIGQ9Ik0yNTYgNDhDMzQxLjQgNDggNDA4IDExNC42IDQwOCAyMDBzLTY2LjYgMTUyLTE1MiAxNTJTNTQgMjg1LjQgNTQgMjAwUzE3MC42IDQ4IDI1NiA0OHoiLz48L3N2Zz4=",
-            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJwaW5rIiBkPSJNMjU2IDQ4QzM0MS40IDQ4IDQwOCAxMTQuNiA0MDggMjAwcy02Ni42IDE1Mi0xNTIgMTUyUzU0IDI4NS40IDU0IDIwMFMxNzAuNiA0OCAyNTYgNDh6Ii8+PC9zdmc+",
-            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJob3RwaW5rIiBkPSJNMjU2IDQ4QzM0MS40IDQ4IDQwOCAxMTQuNiA0MDggMjAwcy02Ni42IDE1Mi0xNTIgMTUyUzU0IDI4NS40IDU0IDIwMFMxNzAuNiA0OCAyNTYgNDh6Ii8+PC9zdmc+"
-        ];
-
-        class PetalSystem {
-            constructor() {
-                this.container = document.getElementById('petalContainer');
-                this.controlBtn = document.getElementById('controlBtn');
-                this.isPlaying = false;
-                this.petals = [];
-                this.animationInterval = null;
-                this.nextPetalTime = 0;
-                this.init();
-            }
-
-            init() {
-                this.controlBtn.addEventListener('click', () => {
-                    if (!this.isPlaying) {
-                        this.startAnimation();
-                        this.controlBtn.textContent = '暂停花瓣雨';
-                        this.controlBtn.classList.remove('btn-danger');
-                        this.controlBtn.classList.add('btn-warning');
-                    } else {
-                        this.pauseAnimation();
-                        this.controlBtn.textContent = '继续花瓣雨';
-                        this.controlBtn.classList.remove('btn-warning');
-                        this.controlBtn.classList.add('btn-success');
-                    }
-                    this.isPlaying = !this.isPlaying;
-                });
-            }
-
-            startAnimation() {
-                // 启动花瓣生成
-                this.generatePetals();
-                
-                // 恢复所有花瓣动画
-                this.petals.forEach(petal => {
-                    petal.classList.remove('paused');
-                    const currentY = parseFloat(petal.dataset.currentY || 0);
-                    const remainingDistance = window.innerHeight - currentY;
-                    const duration = remainingDistance / 50; // 根据剩余距离计算时间
-                    
-                    petal.style.transition = `transform ${duration}s linear`;
-                    petal.style.transform = `
-                        translate(${petal.dataset.translateX || 0}px, ${window.innerHeight}px)
-                        rotate(${720 + Math.random() * 720}deg)
-                    `;
-                });
-            }
-
-            pauseAnimation() {
-                clearInterval(this.animationInterval);
-                
-                // 暂停所有花瓣动画
-                this.petals.forEach(petal => {
-                    petal.classList.add('paused');
-                    const transform = window.getComputedStyle(petal).transform;
-                    
-                    // 保存当前变换状态
-                    if (transform && transform !== 'none') {
-                        const matrix = new DOMMatrix(transform);
-                        petal.dataset.translateX = matrix.m41;
-                        petal.dataset.currentY = matrix.m42;
-                    }
-                });
-            }
-
-            generatePetals() {
-                // 立即生成一批花瓣
-                for (let i = 0; i < 20; i++) {
-                    this.createPetal();
-                }
-                
-                // 持续生成花瓣
-                this.animationInterval = setInterval(() => {
-                    this.createPetal();
-                    if (Math.random() > 0.7) this.createPetal(); // 70%概率多生成一片
-                }, 200);
-            }
-
-            createPetal() {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                
-                // 随机样式
-                const size = 25 + Math.random() * 25;
-                const startX = Math.random() * 100;
-                petal.style.width = `${size}px`;
-                petal.style.height = `${size}px`;
-                petal.style.left = `${startX}vw`;
-                petal.style.top = `-${size}px`;
-                petal.style.backgroundImage = `url("${PETALS[Math.floor(Math.random() * PETALS.length)]}")`;
-                petal.style.opacity = '0';
-                petal.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
-                petal.style.transform = `rotate(${Math.random() * 360}deg)`;
-                
-                // 添加悬停文本
-                const tooltip = document.createElement('div');
-                tooltip.className = 'petal-tooltip';
-                tooltip.textContent = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
-                petal.appendChild(tooltip);
-                
-                this.container.appendChild(petal);
-                this.petals.push(petal);
-                
-                // 开始动画
-                requestAnimationFrame(() => {
-                    const endX = (Math.random() * 20 - 10);
-                    petal.style.opacity = '0.8';
-                    petal.style.transition = 'transform 8s linear';
-                    petal.style.transform = `
-                        translate(${endX}px, ${window.innerHeight}px)
-                        rotate(${720 + Math.random() * 720}deg)
-                    `;
-                    petal.dataset.translateX = endX;
-                });
-                
-                // 动画完成后重新开始
-                setTimeout(() => {
-                    if (this.isPlaying && petal.parentNode) {
-                        this.resetPetal(petal);
-                    }
-                }, 8000);
-            }
-
-            resetPetal(petal) {
-                const size = parseFloat(petal.style.width);
-                petal.style.top = `-${size}px`;
-                petal.style.left = `${Math.random() * 100}vw`;
-                petal.style.transition = 'none';
-                petal.style.transform = `rotate(${Math.random() * 360}deg)`;
-                
-                requestAnimationFrame(() => {
-                    const endX = (Math.random() * 20 - 10);
-                    petal.style.transition = 'transform 8s linear';
-                    petal.style.transform = `
-                        translate(${endX}px, ${window.innerHeight}px)
-                        rotate(${720 + Math.random() * 720}deg)
-                    `;
-                    petal.dataset.translateX = endX;
-                    
-                    // 循环动画
-                    setTimeout(() => {
-                        if (this.isPlaying && petal.parentNode) {
-                            this.resetPetal(petal);
-                        }
-                    }, 8000);
-                });
-            }
-        }
-
-        // 初始化系统
-        new PetalSystem();
-    </script>
+    
+    <!-- 主要内容区域 -->
+    <div class="container">
+        <div class="results-stats">百度为您找到相关结果约8,680,000个</div>
+        
+        <div class="disclaimer">
+            注意：本页面为模仿百度搜索结果页面的演示页面，以下所有关于"陆双虎"的内容均为虚构，仅供演示使用。
+        </div>
+        
+        <!-- 搜索结果列表 -->
+        <div class="result-item">
+            <h3 class="result-title"><a href="#">陆双虎 - 全球最帅男性排行榜连续五年冠军</a></h3>
+            <div class="result-url">www.example.com/lu-shuanghu-worlds-most-handsome</div>
+            <div class="result-abstract">陆双虎，被誉为"世纪美男"，在全球最帅男性排行榜上已连续五年蝉联冠军。其独特的东方气质与完美面部比例，被国际审美专家誉为"人类面部黄金比例新标准"。</div>
+            <div class="result-tags">2025-11-10 - 相关度：97%</div>
+        </div>
+        
+        <div class="result-item">
+            <h3 class="result-title"><a href="#">陆双虎个人资料与成就介绍</a></h3>
+            <div class="result-url">baike.example.com/lu-shuanghu-profile</div>
+            <div class="result-abstract">陆双虎，1995年出生于中国杭州，身高188cm，演员、模特。毕业于北京电影学院，因出众的外貌和才华在娱乐圈迅速走红，代表作有《倾城之恋》《东方神韵》等。</div>
+            <div class="result-tags">2025-11-08 - 相关度：95%</div>
+        </div>
+        
+        <div class="result-item">
+            <h3 class="result-title"><a href="#">科学分析：为什么陆双虎被认为是世界上最帅的男人？</a></h3>
+            <div class="result-url">www.sciencebeauty.com/analysis-lu-shuanghu</div>
+            <div class="result-abstract">国际面部美学研究协会通过黄金比例分析，证实陆双虎的面部符合99.7%的完美比例，其五官分布、轮廓线条以及气质表现均达到人类审美极限。</div>
+            <div class="result-tags">2025-11-05 - 相关度：93%</div>
+        </div>
+        
+        <div class="result-item">
+            <h3 class="result-title"><a href="#">陆双虎最新写真集《神颜》全球发售</a></h3>
+            <div class="result-url">www.photoart.com/lu-shuanghu-new-photos</div>
+            <div class="result-abstract">陆双虎最新写真集《神颜》在全球同步发售，24小时内销量突破百万，创下摄影集销售新纪录。该写真集展示了陆双虎从东方古典美到现代时尚的多元魅力。</div>
+            <div class="result-tags">2025-11-01 - 相关度：90%</div>
+        </div>
+        
+        <div class="result-item">
+            <h3 class="result-title"><a href="#">网友热议：陆双虎的帅是否超越了国界和文化？</a></h3>
+            <div class="result-url">bbs.example.com/topic/123456</div>
+            <div class="result-abstract">全球网友就"陆双虎的帅是否超越了国界和文化差异"展开热烈讨论。多数人认为，他的美貌确实突破了地域限制，成为一种全球通用的审美标准。</div>
+            <div class="result-tags">2025-10-28 - 相关度：88%</div>
+        </div>
+        
+        <!-- 相关搜索 -->
+        <div class="related-search">
+            <h3 class="related-title">相关搜索</h3>
+            <div class="related-items">
+                <div class="related-item"><a href="#">陆双虎身高体重</a></div>
+                <div class="related-item"><a href="#">陆双虎女朋友</a></div>
+                <div class="related-item"><a href="#">陆双虎家庭背景</a></div>
+                <div class="related-item"><a href="#">陆双虎最新动态</a></div>
+                <div class="related-item"><a href="#">陆双虎电影作品</a></div>
+                <div class="related-item"><a href="#">陆双虎社交媒体</a></div>
+                <div class="related-item"><a href="#">陆双虎获奖记录</a></div>
+                <div class="related-item"><a href="#">陆双虎粉丝俱乐部</a></div>
+            </div>
+        </div>
+        
+        <!-- 分页 -->
+        <div class="pagination">
+            <a href="#" class="page-item active">1</a>
+            <a href="#" class="page-item">2</a>
+            <a href="#" class="page-item">3</a>
+            <a href="#" class="page-item">4</a>
+            <a href="#" class="page-item">5</a>
+            <a href="#" class="page-item">6</a>
+            <a href="#" class="page-item">7</a>
+            <a href="#" class="page-item">8</a>
+            <a href="#" class="page-item">9</a>
+            <a href="#" class="page-item">10</a>
+            <a href="#" class="page-item">下一页></a>
+        </div>
+    </div>
+    
+    <!-- 底部信息 -->
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">关于百度</a>
+            <a href="#">About Baidu</a>
+            <a href="#">使用百度前必读</a>
+            <a href="#">隐私政策</a>
+            <a href="#">帮助中心</a>
+            <a href="#">京ICP证030173号</a>
+        </div>
+        <div>©2025 Baidu 此网页非百度官方网站，仅为模仿示例</div>
+    </div>
 </body>
 </html>
