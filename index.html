@@ -1,310 +1,465 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>谁是世界上最帅的男人——陆双虎_百度搜索</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-        }
-        
-        body {
-            background-color: #fff;
-            color: #333;
-            line-height: 1.5;
-            font-size: 13px;
-        }
-        
-        a {
-            text-decoration: none;
-            color: #3388ff;
-        }
-        
-        a:hover {
-            color: #315efb;
-        }
-        
-        /* 顶部导航和搜索框 */
-        .header {
-            border-bottom: 1px solid #e1e1e1;
-            padding: 20px 0 15px;
-        }
-        
-        .top-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #3388ff;
-        }
-        
-        .search-box {
-            width: 650px;
-            height: 40px;
-            border: 2px solid #3388ff;
-            border-radius: 10px;
-            display: flex;
-            margin: 0 auto;
-        }
-        
-        .search-input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            border-radius: 10px 0 0 10px;
-        }
-        
-        .search-btn {
-            width: 108px;
-            background-color: #3388ff;
-            color: white;
-            border: none;
-            border-radius: 0 10px 10px 0;
-            font-size: 17px;
-            cursor: pointer;
-        }
-        
-        /* 主要内容区域 */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .results-stats {
-            color: #999;
-            margin-bottom: 20px;
-            font-size: 12px;
-        }
-        
-        /* 搜索结果列表 */
-        .result-item {
-            margin-bottom: 25px;
-            max-width: 650px;
-        }
-        
-        .result-title {
-            font-size: 18px;
-            margin-bottom: 5px;
-            font-weight: normal;
-        }
-        
-        .result-url {
-            color: #0c9c1d;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        
-        .result-abstract {
-            color: #555;
-            line-height: 1.6;
-            font-size: 13px;
-        }
-        
-        .result-tags {
-            margin-top: 5px;
-            font-size: 12px;
-            color: #999;
-        }
-        
-        /* 相关搜索 */
-        .related-search {
-            margin: 30px 0;
-            max-width: 650px;
-        }
-        
-        .related-title {
-            font-size: 16px;
-            margin-bottom: 15px;
-            color: #666;
-        }
-        
-        .related-items {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .related-item {
-            margin-right: 20px;
-            margin-bottom: 10px;
-        }
-        
-        /* 分页 */
-        .pagination {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .page-item {
-            display: inline-block;
-            margin: 0 5px;
-            padding: 5px 15px;
-            border: 1px solid #e1e1e1;
-            border-radius: 4px;
-            color: #3388ff;
-        }
-        
-        .page-item.active {
-            background-color: #3388ff;
-            color: white;
-            border-color: #3388ff;
-        }
-        
-        .page-item:not(.active):hover {
-            background-color: #f5f5f5;
-        }
-        
-        /* 底部信息 */
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            font-size: 12px;
-            color: #999;
-            border-top: 1px solid #e1e1e1;
-        }
-        
-        .footer-links {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            margin: 0 10px;
-            color: #666;
-        }
-
-        /* 免责声明 */
-        .disclaimer {
-            background-color: #f9f9f9;
-            padding: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #ffa500;
-            font-size: 12px;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moreliv - Luxury Home Furniture, Quality Living</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 自定义Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3A2E2F',    // Dark brown primary
+            secondary: '#D4B16A',  // Gold accent
+            light: '#F5F1E9',      // Off-white background
+            dark: '#1E1819',       // Pure black
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .nav-shadow {
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .fade-in.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .product-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .product-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      }
+      /* Logo container style optimization */
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+      .logo-img {
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  </style>
 </head>
-<body>
-    <!-- 顶部导航和搜索框 -->
-    <div class="header">
-        <div class="top-nav">
-            <div class="logo">百度</div>
+<body class="bg-light text-primary font-sans overflow-x-hidden">
+  <!-- Loading animation -->
+  <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-light">
+    <div class="w-16 h-16 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
+  </div>
+
+  <!-- Navigation bar -->
+  <header id="navbar" class="fixed w-full top-0 z-40 transition-all duration-500 py-4 px-6 md:px-12 bg-transparent">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Brand Logo - Only image logo (removed text duplication) -->
+      <a href="#" class="logo-container">
+        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/938bd9dccce946c186a0d2a42b834e3d.jpg~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=202604072026273368FD64F29A69497C95&rrcfp=8a172a1a&x-expires=1776169587&x-signature=xpRi1779IUBCm8IlwrsothliVsw%3D" 
+             alt="Moreliv Luxury Home Furniture" 
+             class="logo-img w-[clamp(60px,10vw,120px)]">
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#home" class="text-primary hover:text-secondary transition-colors">Home</a>
+        <a href="#about" class="text-primary hover:text-secondary transition-colors">Brand Philosophy</a>
+        <a href="#products" class="text-primary hover:text-secondary transition-colors">Featured Products</a>
+        <a href="#advantage" class="text-primary hover:text-secondary transition-colors">Core Advantages</a>
+        <a href="#contact" class="px-6 py-2 bg-secondary text-white rounded-md hover:bg-primary transition-colors">
+          Consult Now
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger menu -->
+      <button id="menuBtn" class="md:hidden text-2xl text-primary">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full bg-white nav-hidden h-0 overflow-hidden transition-all duration-300">
+      <div class="container mx-auto px-6 py-4 flex flex-col gap-4">
+        <a href="#home" class="py-2 text-primary">Home</a>
+        <a href="#about" class="py-2 text-primary">Brand Philosophy</a>
+        <a href="#products" class="py-2 text-primary">Featured Products</a>
+        <a href="#advantage" class="py-2 text-primary">Core Advantages</a>
+        <a href="#contact" class="py-2 bg-secondary text-white text-center rounded-md">Consult Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section id="home" class="min-h-screen flex items-center justify-center relative px-6 pt-24">
+    <div class="absolute inset-0 z-0">
+      <img src="https://picsum.photos/seed/moreliv-hero/1920/1080" alt="Moreliv Luxury Home Furniture" 
+        class="w-full h-full object-cover opacity-90">
+      <div class="absolute inset-0 bg-light/60"></div>
+    </div>
+
+    <div class="container mx-auto z-10 text-center md:text-left">
+      <div class="max-w-2xl mx-auto md:mx-0 fade-in">
+        <h1 class="text-[clamp(2rem,5vw,4rem)] font-bold leading-tight mb-4">
+          Make Home <span class="text-secondary">More Warm</span><br>
+          Make Life <span class="text-secondary">More Quality</span>
+        </h1>
+        <p class="text-lg md:text-xl text-primary/80 mb-8 max-w-lg">
+          Moreliv specializes in luxury home furniture design, crafting each piece with artisan craftsmanship to create your ideal living space
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="#products" class="px-8 py-3 bg-primary text-white rounded-md hover:bg-dark transition-colors">
+            Browse Products
+          </a>
+          <a href="#contact" class="px-8 py-3 border-2 border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-colors">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand philosophy -->
+  <section id="about" class="py-20 px-6 bg-white">
+    <div class="container mx-auto text-center">
+      <div class="fade-in">
+        <h2 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold mb-3">Brand Philosophy</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-10"></div>
+        <p class="max-w-3xl mx-auto text-lg text-primary/70 leading-relaxed mb-8">
+          Derived from the concept of "More + Live", Moreliv firmly believes that furniture is not only a practical product but also an expression of life attitude. 
+          We adhere to original design, select natural materials, and polish with artisan craftsmanship to create luxury home furniture that is both beautiful and practical for every family.
+        </p>
+        <div class="flex flex-col md:flex-row gap-6 justify-center mt-12">
+          <div class="flex-1 p-6">
+            <i class="fa fa-leaf text-4xl text-secondary mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Natural & Eco-friendly</h3>
+            <p class="text-primary/70">Selected imported solid wood and eco-friendly fabrics to protect family health</p>
+          </div>
+          <div class="flex-1 p-6">
+            <i class="fa fa-star text-4xl text-secondary mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Original Design</h3>
+            <p class="text-primary/70">Senior designer team creates unique home styles</p>
+          </div>
+          <div class="flex-1 p-6">
+            <i class="fa fa-heart text-4xl text-secondary mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Quality Life</h3>
+            <p class="text-primary/70">Polish every detail to make each piece of furniture a work of art for life</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section id="products" class="py-20 px-6 bg-light">
+    <div class="container mx-auto">
+      <div class="text-center fade-in">
+        <h2 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold mb-3">Featured Products</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-10"></div>
+        <p class="max-w-2xl mx-auto text-primary/70 mb-12">
+          Moreliv covers sofas, beds, tables and chairs, cabinets and other categories to meet the needs of whole house customization
+        </p>
+      </div>
+
+      <!-- Product cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product 1 -->
+        <div class="bg-white rounded-lg overflow-hidden product-hover fade-in">
+          <img src="https://picsum.photos/seed/moreliv-sofa/600/450" alt="Luxury Fabric Sofa" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Luxury Fabric Sofa</h3>
+            <p class="text-primary/70 mb-4">Comfortable & Breathable | Minimalist Design | Wear-resistant</p>
+            <a href="#contact" class="text-secondary font-medium hover:underline">Consult Now <i class="fa fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="bg-white rounded-lg overflow-hidden product-hover fade-in">
+          <img src="https://picsum.photos/seed/moreliv-bed/600/450" alt="Italian Minimalist Bed" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Italian Minimalist Bed</h3>
+            <p class="text-primary/70 mb-4">Solid Wood Frame | Silent Bed Board | Luxury Leather</p>
+            <a href="#contact" class="text-secondary font-medium hover:underline">Consult Now <i class="fa fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="bg-white rounded-lg overflow-hidden product-hover fade-in">
+          <img src="https://picsum.photos/seed/moreliv-table/600/450" alt="Sintered Stone Dining Table" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Sintered Stone Dining Table</h3>
+            <p class="text-primary/70 mb-4">High Temperature Resistant | Easy to Clean | Luxury & Elegant</p>
+            <a href="#contact" class="text-secondary font-medium hover:underline">Consult Now <i class="fa fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="bg-white rounded-lg overflow-hidden product-hover fade-in">
+          <img src="https://picsum.photos/seed/moreliv-cabinet/600/450" alt="Solid Wood Storage Cabinet" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Solid Wood Storage Cabinet</h3>
+            <p class="text-primary/70 mb-4">Large Capacity | Eco-friendly Paint | Stable Structure</p>
+            <a href="#contact" class="text-secondary font-medium hover:underline">Consult Now <i class="fa fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 fade-in">
+        <a href="#contact" class="px-8 py-3 bg-secondary text-white rounded-md hover:bg-primary transition-colors inline-block">
+          View More Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core advantages -->
+  <section id="advantage" class="py-20 px-6 bg-primary text-white">
+    <div class="container mx-auto text-center">
+      <div class="fade-in">
+        <h2 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold mb-3">Why Choose Moreliv</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-10"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+        <div class="p-6 fade-in">
+          <i class="fa fa-check-circle text-4xl text-secondary mb-6"></i>
+          <h3 class="text-xl font-semibold mb-3">10-Year Warranty</h3>
+          <p class="text-white/80">Lifetime maintenance for core components, worry-free after-sales</p>
+        </div>
+        <div class="p-6 fade-in">
+          <i class="fa fa-truck text-4xl text-secondary mb-6"></i>
+          <h3 class="text-xl font-semibold mb-3">Free Delivery & Installation</h3>
+          <p class="text-white/80">Nationwide on-site installation, one-stop service</p>
+        </div>
+        <div class="p-6 fade-in">
+          <i class="fa fa-paint-brush text-4xl text-secondary mb-6"></i>
+          <h3 class="text-xl font-semibold mb-3">Customization Service</h3>
+          <p class="text-white/80">Customize size, color and material on demand</p>
+        </div>
+        <div class="p-6 fade-in">
+          <i class="fa fa-shield text-4xl text-secondary mb-6"></i>
+          <h3 class="text-xl font-semibold mb-3">Eco-friendly Certification</h3>
+          <p class="text-white/80">Compliant with national environmental standards, formaldehyde-free</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real cases -->
+  <section class="py-20 px-6 bg-white">
+    <div class="container mx-auto">
+      <div class="text-center fade-in">
+        <h2 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold mb-3">Real Cases</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-10"></div>
+        <p class="max-w-2xl mx-auto text-primary/70 mb-12">
+          Moreliv is chosen by thousands of families, showing real home effect
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="https://picsum.photos/seed/moreliv-case1/800/600" alt="Home Case 1" class="w-full h-64 object-cover rounded-lg fade-in">
+        <img src="https://picsum.photos/seed/moreliv-case2/800/600" alt="Home Case 2" class="w-full h-64 object-cover rounded-lg fade-in">
+        <img src="https://picsum.photos/seed/moreliv-case3/800/600" alt="Home Case 3" class="w-full h-64 object-cover rounded-lg fade-in">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form (Core conversion module) -->
+  <section id="contact" class="py-20 px-6 bg-light">
+    <div class="container mx-auto">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 fade-in">
+        <div class="text-center mb-10">
+          <h2 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold mb-3">Consult Moreliv Now</h2>
+          <div class="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+          <p class="text-primary/70">Leave your requirements and we will contact you within 1 hour</p>
+        </div>
+
+        <!-- Formspree form interface - Replace with your Formspree address to receive emails -->
+        <form action="https://formspree.io/f/mdkpajvk" method="POST" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-                <a href="#">新闻</a>
-                <a href="#">网页</a>
-                <a href="#">贴吧</a>
-                <a href="#">知道</a>
-                <a href="#">音乐</a>
-                <a href="#">图片</a>
-                <a href="#">视频</a>
-                <a href="#">地图</a>
-                <a href="#">文库</a>
+              <label class="block text-sm font-medium mb-2">Your Name</label>
+              <input type="text" name="name" required 
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
             </div>
-        </div>
-        
-        <div class="search-box">
-            <input type="text" class="search-input" value="谁是世界上最帅的男人——陆双虎">
-            <button class="search-btn">百度一下</button>
-        </div>
-    </div>
-    
-    <!-- 主要内容区域 -->
-    <div class="container">
-        <div class="results-stats">百度为您找到相关结果约8,680,000个</div>
-        
-        <div class="disclaimer">
-            注意：本页面为模仿百度搜索结果页面的演示页面，以下所有关于"陆双虎"的内容均为虚构，仅供演示使用。
-        </div>
-        
-        <!-- 搜索结果列表 -->
-        <div class="result-item">
-            <h3 class="result-title"><a href="#">陆双虎 - 全球最帅男性排行榜连续五年冠军</a></h3>
-            <div class="result-url">www.example.com/lu-shuanghu-worlds-most-handsome</div>
-            <div class="result-abstract">陆双虎，被誉为"世纪美男"，在全球最帅男性排行榜上已连续五年蝉联冠军。其独特的东方气质与完美面部比例，被国际审美专家誉为"人类面部黄金比例新标准"。</div>
-            <div class="result-tags">2025-11-10 - 相关度：97%</div>
-        </div>
-        
-        <div class="result-item">
-            <h3 class="result-title"><a href="#">陆双虎个人资料与成就介绍</a></h3>
-            <div class="result-url">baike.example.com/lu-shuanghu-profile</div>
-            <div class="result-abstract">陆双虎，1995年出生于中国杭州，身高188cm，演员、模特。毕业于北京电影学院，因出众的外貌和才华在娱乐圈迅速走红，代表作有《倾城之恋》《东方神韵》等。</div>
-            <div class="result-tags">2025-11-08 - 相关度：95%</div>
-        </div>
-        
-        <div class="result-item">
-            <h3 class="result-title"><a href="#">科学分析：为什么陆双虎被认为是世界上最帅的男人？</a></h3>
-            <div class="result-url">www.sciencebeauty.com/analysis-lu-shuanghu</div>
-            <div class="result-abstract">国际面部美学研究协会通过黄金比例分析，证实陆双虎的面部符合99.7%的完美比例，其五官分布、轮廓线条以及气质表现均达到人类审美极限。</div>
-            <div class="result-tags">2025-11-05 - 相关度：93%</div>
-        </div>
-        
-        <div class="result-item">
-            <h3 class="result-title"><a href="#">陆双虎最新写真集《神颜》全球发售</a></h3>
-            <div class="result-url">www.photoart.com/lu-shuanghu-new-photos</div>
-            <div class="result-abstract">陆双虎最新写真集《神颜》在全球同步发售，24小时内销量突破百万，创下摄影集销售新纪录。该写真集展示了陆双虎从东方古典美到现代时尚的多元魅力。</div>
-            <div class="result-tags">2025-11-01 - 相关度：90%</div>
-        </div>
-        
-        <div class="result-item">
-            <h3 class="result-title"><a href="#">网友热议：陆双虎的帅是否超越了国界和文化？</a></h3>
-            <div class="result-url">bbs.example.com/topic/123456</div>
-            <div class="result-abstract">全球网友就"陆双虎的帅是否超越了国界和文化差异"展开热烈讨论。多数人认为，他的美貌确实突破了地域限制，成为一种全球通用的审美标准。</div>
-            <div class="result-tags">2025-10-28 - 相关度：88%</div>
-        </div>
-        
-        <!-- 相关搜索 -->
-        <div class="related-search">
-            <h3 class="related-title">相关搜索</h3>
-            <div class="related-items">
-                <div class="related-item"><a href="#">陆双虎身高体重</a></div>
-                <div class="related-item"><a href="#">陆双虎女朋友</a></div>
-                <div class="related-item"><a href="#">陆双虎家庭背景</a></div>
-                <div class="related-item"><a href="#">陆双虎最新动态</a></div>
-                <div class="related-item"><a href="#">陆双虎电影作品</a></div>
-                <div class="related-item"><a href="#">陆双虎社交媒体</a></div>
-                <div class="related-item"><a href="#">陆双虎获奖记录</a></div>
-                <div class="related-item"><a href="#">陆双虎粉丝俱乐部</a></div>
+            <div>
+              <label class="block text-sm font-medium mb-2">Contact Phone</label>
+              <input type="tel" name="phone" required 
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
             </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Consultation Type</label>
+            <select name="demand" required 
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+              <option value="">Please select consultation type</option>
+              <option value="Product Consultation">Product Consultation</option>
+              <option value="Customization Service">Customization Service</option>
+              <option value="Price Consultation">Price Consultation</option>
+              <option value="Cooperation">Cooperation</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Message Content</label>
+            <textarea name="message" rows="4" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+          </div>
+          <button type="submit" 
+            class="w-full py-4 bg-secondary text-white rounded-md hover:bg-primary transition-colors text-lg font-medium">
+            Submit Consultation
+          </button>
+        </form>
+
+        <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-center">
+          <div class="flex items-center gap-2">
+            <i class="fa fa-phone text-secondary text-xl"></i>
+            <span>400-123-4567</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa fa-envelope text-secondary text-xl"></i>
+            <span>service@moreliv.com</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa fa-map-marker text-secondary text-xl"></i>
+            <span>Lane 299 Lantian Road, Haishu District, Ningbo City, Zhejiang Province, Liyuan Xindu</span>
+          </div>
         </div>
-        
-        <!-- 分页 -->
-        <div class="pagination">
-            <a href="#" class="page-item active">1</a>
-            <a href="#" class="page-item">2</a>
-            <a href="#" class="page-item">3</a>
-            <a href="#" class="page-item">4</a>
-            <a href="#" class="page-item">5</a>
-            <a href="#" class="page-item">6</a>
-            <a href="#" class="page-item">7</a>
-            <a href="#" class="page-item">8</a>
-            <a href="#" class="page-item">9</a>
-            <a href="#" class="page-item">10</a>
-            <a href="#" class="page-item">下一页></a>
-        </div>
+      </div>
     </div>
-    
-    <!-- 底部信息 -->
-    <div class="footer">
-        <div class="footer-links">
-            <a href="#">关于百度</a>
-            <a href="#">About Baidu</a>
-            <a href="#">使用百度前必读</a>
-            <a href="#">隐私政策</a>
-            <a href="#">帮助中心</a>
-            <a href="#">京ICP证030173号</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white pt-16 pb-6 px-6">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <!-- Footer Logo - Only image logo -->
+          <div class="logo-container mb-4">
+            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/938bd9dccce946c186a0d2a42b834e3d.jpg~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=202604072026273368FD64F29A69497C95&rrcfp=8a172a1a&x-expires=1776169587&x-signature=xpRi1779IUBCm8IlwrsothliVsw%3D" 
+                 alt="Moreliv Luxury Home Furniture" 
+                 class="logo-img w-32">
+          </div>
+          <p class="text-white/70 mb-4">Luxury Home Furniture · Quality Living</p>
+          <div class="flex gap-4 text-xl">
+            <a href="#" class="text-white/70 hover:text-secondary"><i class="fa fa-weixin"></i></a>
+            <a href="#" class="text-white/70 hover:text-secondary"><i class="fa fa-weibo"></i></a>
+            <a href="#" class="text-white/70 hover:text-secondary"><i class="fa fa-instagram"></i></a>
+          </div>
         </div>
-        <div>©2025 Baidu 此网页非百度官方网站，仅为模仿示例</div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-white/70">
+            <li><a href="#home" class="hover:text-secondary">Home</a></li>
+            <li><a href="#about" class="hover:text-secondary">Brand Philosophy</a></li>
+            <li><a href="#products" class="hover:text-secondary">Featured Products</a></li>
+            <li><a href="#contact" class="hover:text-secondary">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Service Support</h4>
+          <ul class="space-y-2 text-white/70">
+            <li><a href="#" class="hover:text-secondary">Customization Service</a></li>
+            <li><a href="#" class="hover:text-secondary">After-sales Guarantee</a></li>
+            <li><a href="#" class="hover:text-secondary">Delivery & Installation</a></li>
+            <li><a href="#" class="hover:text-secondary">Cooperation Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-white/70">
+            <li><i class="fa fa-phone mr-2"></i> 400-123-4567</li>
+            <li><i class="fa fa-envelope mr-2"></i> service@moreliv.com</li>
+            <li><i class="fa fa-map-marker mr-2"></i> Lane 299 Lantian Road, Haishu District, Ningbo City, Zhejiang Province, Liyuan Xindu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-6 text-center text-white/50 text-sm">
+        © 2026 Moreliv Luxury Home Furniture Brand. All Rights Reserved.
+      </div>
     </div>
+  </footer>
+
+  <script>
+    // Loading animation
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('opacity-0', 'pointer-events-none');
+        document.getElementById('loader').style.transition = 'opacity 0.5s ease';
+      }, 800);
+    });
+
+    // Navigation scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white', 'nav-shadow', 'py-2');
+        navbar.classList.remove('py-4', 'bg-transparent');
+      } else {
+        navbar.classList.remove('bg-white', 'nav-shadow', 'py-2');
+        navbar.classList.add('py-4', 'bg-transparent');
+      }
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.style.height = 'auto';
+        menuBtn.innerHTML = '<i class="fa fa-times"></i>';
+      } else {
+        mobileMenu.style.height = '0';
+        menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+      }
+    });
+
+    // Scroll fade-in animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const checkFade = () => {
+      fadeElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight * 0.85) {
+          el.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', checkFade);
+    checkFade();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+        // Close mobile menu
+        if (menuOpen) {
+          mobileMenu.style.height = '0';
+          menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+          menuOpen = false;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
